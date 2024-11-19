@@ -1,33 +1,39 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [title, setTitle] = useState('Title')
+  const [article, setArticle] = useState('lorem ipsum asfda dagsg eagadzgaz.')
+
+
+  function handleTitleChange(e) {
+    console.log(e);
+    setTitle(e.target.value)
+  }
+
+  function handleArticleChange(e) {
+    console.log(e);
+    setArticle(e.target.value)
+  }
 
   return (
     <>
+
+      <h1>Inserisci il titolo</h1>
+      <input type="text" name='title' id='title' value={title} onChange={e => setTitle(e.target.value)} />
+
+      <h1>Inserisci l'articolo</h1>
+      <input type='text' name='article' id='article' value={article} onChange={e => setArticle(e.target.value)} />
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <input type="submit" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <card>
+        <h2>{title}</h2>
+        <div>{article}</div>
+      </card>
+
     </>
   )
 }
